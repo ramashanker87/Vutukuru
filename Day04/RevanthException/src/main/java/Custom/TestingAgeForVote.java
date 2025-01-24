@@ -4,7 +4,7 @@ public class TestingAgeForVote {
     public static void main(String[] args) {
         TestingAgeForVote test=new TestingAgeForVote();
         try{
-            test.validateAge(22);
+            test.validateAge(16);
         }catch(RevanthAgeValidationException e){
             e.printStackTrace();
             System.out.println(e.getMessage());
