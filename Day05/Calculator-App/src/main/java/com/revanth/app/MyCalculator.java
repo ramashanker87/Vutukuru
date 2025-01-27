@@ -1,6 +1,6 @@
 package com.revanth.app;
 
-public class Calculator {
+public class MyCalculator {
     public double add(double n1, double n2) {
         return n1+n2;
     }
@@ -11,5 +11,9 @@ public class Calculator {
 
     public double div(double n1,double n2){
         return n1/n2;
+    }
+
+    public double multiply(double n1,double n2){
+        return n1*n2;
     }
 }
