@@ -21,15 +21,15 @@ public class SecurityConfig {
 
   @Value("${admin.user}")
   private String adminUser;
-  @Value("${admin.passowrd}")
-  private String adminPassowrd;
+  @Value("${admin.password}")
+  private String adminPassword;
   @Value("${admin.role}")
   private String adminRole;
 
   @Value("${user.user}")
   private String userUser;
   @Value("${user.password}")
-  private String userPassowrd;
+  private String userPassword;
   @Value("${user.role}")
   private String userRole;
 
@@ -37,12 +37,12 @@ public class SecurityConfig {
   public UserDetailsService userDetailsService() {
     UserDetails admin = User.withUsername(adminUser)
         .password(passwordEncoder()
-            .encode(adminPassowrd))
+            .encode(adminPassword))
         .roles(adminRole)
         .build();
     UserDetails user = User.withUsername(userUser)
         .password(passwordEncoder()
-            .encode(userPassowrd))
+            .encode(userPassword))
         .roles(userRole)
         .build();
     return new InMemoryUserDetailsManager(admin,user);
