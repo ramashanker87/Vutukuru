@@ -23,7 +23,6 @@ public class PatientServiceTest {
 //    @Mock
 //    private Patient patient;
 
-
 //      private PatientService patientService;
 //
 //      void setUp(){

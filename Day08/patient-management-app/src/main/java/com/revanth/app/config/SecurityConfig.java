@@ -1,5 +1,6 @@
 package com.revanth.app.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,17 +19,31 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @Configuration
 public class SecurityConfig {
 
+  @Value("${admin.user}")
+  private String adminUser;
+  @Value("${admin.password}")
+  private String adminPassword;
+  @Value("${admin.role}")
+  private String adminRole;
+
+  @Value("${user.user}")
+  private String userUser;
+  @Value("${user.password}")
+  private String userPassword;
+  @Value("${user.role}")
+  private String userRole;
+
   @Bean
   public UserDetailsService userDetailsService() {
-    UserDetails admin = User.withUsername("admin1")
+    UserDetails admin = User.withUsername("adminUser")
         .password(passwordEncoder()
-            .encode("password1"))
-        .roles("PATIENT")
+            .encode("adminPassword"))
+        .roles("adminRole")
         .build();
-    UserDetails user = User.withUsername("user1")
+    UserDetails user = User.withUsername("userUser")
         .password(passwordEncoder()
-            .encode("password1"))
-        .roles("DOCTOR`")
+            .encode("userPassword"))
+        .roles("userRole`")
         .build();
     return new InMemoryUserDetailsManager(admin,user);
   }
@@ -44,10 +59,10 @@ public class SecurityConfig {
     http
         .csrf(csrf -> csrf.disable()) // Disable CSRF for APIs
         .authorizeHttpRequests(auth -> auth
-            .requestMatchers("/get/all/patient").hasRole("PATIENT")
-            .requestMatchers("/create/patient").hasRole("DOCTOR")
-            .requestMatchers("/update/patient").hasRole("DOCTOR")
-            .requestMatchers("/delete/patient").hasRole("DOCTOR")
+            .requestMatchers("/get/all/patient").hasRole("userRole")
+            .requestMatchers("/create/patient").hasRole("adminRole")
+            .requestMatchers("/update/patient").hasRole("adminRole")
+            .requestMatchers("/delete/patient").hasRole("adminRole")
             .anyRequest().authenticated()
         )
         .httpBasic(withDefaults());
