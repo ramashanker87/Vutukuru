@@ -35,15 +35,15 @@ public class SecurityConfig {
 
   @Bean
   public UserDetailsService userDetailsService() {
-    UserDetails admin = User.withUsername("adminUser")
+    UserDetails admin = User.withUsername(adminUser)
         .password(passwordEncoder()
-            .encode("adminPassword"))
-        .roles("adminRole")
+            .encode(adminPassword))
+        .roles(adminRole)
         .build();
-    UserDetails user = User.withUsername("userUser")
+    UserDetails user = User.withUsername(userUser)
         .password(passwordEncoder()
-            .encode("userPassword"))
-        .roles("userRole`")
+            .encode(userPassword))
+        .roles(userRole)
         .build();
     return new InMemoryUserDetailsManager(admin,user);
   }
@@ -59,10 +59,10 @@ public class SecurityConfig {
     http
         .csrf(csrf -> csrf.disable()) // Disable CSRF for APIs
         .authorizeHttpRequests(auth -> auth
-            .requestMatchers("/get/all/patient").hasRole("userRole")
-            .requestMatchers("/create/patient").hasRole("adminRole")
-            .requestMatchers("/update/patient").hasRole("adminRole")
-            .requestMatchers("/delete/patient").hasRole("adminRole")
+            .requestMatchers("/get/all/patient").hasRole(userRole)
+            .requestMatchers("/create/patient").hasRole(adminRole)
+            .requestMatchers("/update/patient").hasRole(adminRole)
+            .requestMatchers("/delete/patient").hasRole(adminRole)
             .anyRequest().authenticated()
         )
         .httpBasic(withDefaults());
