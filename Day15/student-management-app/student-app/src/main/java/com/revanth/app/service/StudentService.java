@@ -24,16 +24,13 @@ public class StudentService {
         return studentRepository.findAll();
     }
 
-    public Student updateStudent(Long Id , int age) {
+    public Student updateStudent(Long id , int age) {
         Student student=studentRepository.getById(id);
-        student
-    }
-    public Patient updatePatientHospital(Long id, String newHospitalName) {
-        Patient patient=patientRepository.getById(id);
-        patient.setHospitalName(newHospitalName);
-        return patientRepository.save(patient);
+        student.setAge(age);
+        return studentRepository.save(student);
     }
 
-    public Student deleteStudent(String name) {
+    public void deleteStudent(Long id) {
+         studentRepository.deleteById(id);
     }
 }

@@ -17,17 +17,14 @@ import java.util.List;
 public class StudentController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(StudentController.class);
+    @Autowired
+    private  RestTemplate restTemplate;
 
-    private final RestTemplate restTemplate;
-
-    public StudentController(RestTemplate restTemplate) {
-        this.restTemplate = restTemplate;
-    }
     @Value("${get.receive.url}")
-    String receivegetUrl; //http://localhost:10082/receiver/get
+    private String receivegetUrl; //http://localhost:10082/student/get
 
     @Value("${post.receive.url}")
-    String receivepostUrl; //http://localhost:10082/receiver/post
+    private String receivepostUrl; //http://localhost:10082/student/post
 
     @Value("${put.receive.url}")
     String receiveputUrl; //http://localhost:10082/receiver/put
@@ -44,19 +41,35 @@ public class StudentController {
 //    }
     @PostMapping("/save")
     public Student saveStudent(@RequestBody final Student student) {
+        ResponseEntity<String> response
+                = restTemplate.exchange(receivegetUrl,HttpMethod.GET, null,String.class);
+        LOGGER.info(response.getStatusCode().toString());
+        LOGGER.info(response.getBody());
         return studentService.saveStudent(student);
     }
     @GetMapping("/read")
     public List<Student> getAllStudents() {
+        ResponseEntity<String> response
+                = restTemplate.exchange(receivegetUrl,HttpMethod.GET, null,String.class);
+        LOGGER.info(response.getStatusCode().toString());
+        LOGGER.info(response.getBody());
         return studentService.getAllStudents();
     }
     @PutMapping("/update")
     public Student updateStudent(@RequestParam Long id, @RequestParam int age) {
+        ResponseEntity<String> response
+                = restTemplate.exchange(receivegetUrl,HttpMethod.GET, null,String.class);
+        LOGGER.info(response.getStatusCode().toString());
+        LOGGER.info(response.getBody());
         return studentService.updateStudent(id,age);
     }
-    @DeleteMapping("/dpdate")
-    public Student updateStudent(@RequestParam Long id) {
-        return studentService.deleteStudent(id);
+    @DeleteMapping("/delete")
+    public void deleteStudent(@RequestParam Long id) {
+        ResponseEntity<String> response
+                = restTemplate.exchange(receivegetUrl,HttpMethod.GET, null,String.class);
+        LOGGER.info(response.getStatusCode().toString());
+        LOGGER.info(response.getBody());
+         studentService.deleteStudent(id);
     }
 
 }

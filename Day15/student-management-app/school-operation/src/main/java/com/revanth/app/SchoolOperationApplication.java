@@ -1,4 +1,4 @@
-package com.revanth.app.school_operation;
+package com.revanth.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
