@@ -1,0 +1,70 @@
+2025-02-17 10:16:15 [main] INFO  c.v.VehicleAppApplicationTests - Starting VehicleAppApplicationTests using Java 23.0.2 with PID 5508 (started by admin in C:\Users\admin\IdeaProjects\Vutukuru\Day20\Vehicle-app)
+2025-02-17 10:16:15 [main] INFO  c.v.VehicleAppApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2025-02-17 10:16:19 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2025-02-17 10:16:19 [main] INFO  c.v.VehicleAppApplicationTests - Started VehicleAppApplicationTests in 4.835 seconds (process running for 7.078)
+2025-02-17 10:16:53 [main] INFO  c.vehicle_app.VehicleAppApplication - Starting VehicleAppApplication using Java 23.0.2 with PID 8836 (C:\Users\admin\IdeaProjects\Vutukuru\Day20\Vehicle-app\target\classes started by admin in C:\Users\admin\IdeaProjects\Vutukuru\Day20\Vehicle-app)
+2025-02-17 10:16:53 [main] INFO  c.vehicle_app.VehicleAppApplication - No active profile set, falling back to 1 default profile: "default"
+2025-02-17 10:16:56 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-02-17 10:16:56 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-02-17 10:16:56 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-02-17 10:16:56 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-02-17 10:16:56 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2201 ms
+2025-02-17 10:16:57 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2025-02-17 10:16:57 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2025-02-17 10:16:57 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-02-17 10:16:57 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8081 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8081 or configure this application to listen on another port.
+
+2025-02-17 10:18:02 [main] INFO  c.vehicle_app.VehicleAppApplication - Starting VehicleAppApplication using Java 23.0.2 with PID 9248 (C:\Users\admin\IdeaProjects\Vutukuru\Day20\Vehicle-app\target\classes started by admin in C:\Users\admin\IdeaProjects\Vutukuru\Day20\Vehicle-app)
+2025-02-17 10:18:02 [main] INFO  c.vehicle_app.VehicleAppApplication - No active profile set, falling back to 1 default profile: "default"
+2025-02-17 10:18:04 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-02-17 10:18:04 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-02-17 10:18:04 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-02-17 10:18:04 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-02-17 10:18:04 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2095 ms
+2025-02-17 10:18:05 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2025-02-17 10:18:05 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2025-02-17 10:18:05 [main] INFO  c.vehicle_app.VehicleAppApplication - Started VehicleAppApplication in 4.012 seconds (process running for 4.763)
+2025-02-17 10:20:26 [http-nio-8081-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-02-17 10:20:26 [http-nio-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-02-17 10:20:26 [http-nio-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2025-02-17 10:20:27 [http-nio-8081-exec-1] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public java.lang.String com.vehicle_app.contoller.VehicleController.registerVehicle(com.vehicle_app.module.Vehicle,com.vehicle_app.module.Owner)]
+2025-02-17 10:23:03 [http-nio-8081-exec-4] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public java.lang.String com.vehicle_app.contoller.VehicleController.registerVehicle(com.vehicle_app.module.Vehicle,com.vehicle_app.module.Owner)]
+2025-02-17 10:25:54 [http-nio-8081-exec-6] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2025-02-17 10:32:52 [http-nio-8081-exec-9] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public java.lang.String com.vehicle_app.contoller.VehicleController.registerVehicle(com.vehicle_app.module.Vehicle,com.vehicle_app.module.Owner)]
+2025-02-17 10:37:05 [http-nio-8081-exec-2] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public java.lang.String com.vehicle_app.contoller.VehicleController.registerVehicle(com.vehicle_app.module.Vehicle,com.vehicle_app.module.Owner)]
+2025-02-17 10:43:43 [http-nio-8081-exec-3] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.vehicle_app.module.Vehicle` from Array value (token `JsonToken.START_ARRAY`)]
+2025-02-17 19:28:54 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-02-17 19:28:54 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-02-17T19:34:52.319-08:00  INFO 14112 --- [Vehicle-app] [main] c.v.VehicleAppApplicationTests           : Starting VehicleAppApplicationTests using Java 23.0.2 with PID 14112 (started by admin in C:\Users\admin\IdeaProjects\Vutukuru\Day20\Vehicle-app)
+2025-02-17T19:34:52.322-08:00  INFO 14112 --- [Vehicle-app] [main] c.v.VehicleAppApplicationTests           : No active profile set, falling back to 1 default profile: "default"
+2025-02-17T19:34:57.131-08:00  INFO 14112 --- [Vehicle-app] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-02-17T19:34:57.358-08:00  INFO 14112 --- [Vehicle-app] [main] c.v.VehicleAppApplicationTests           : Started VehicleAppApplicationTests in 6.069 seconds (process running for 10.035)
+2025-02-17T19:37:22.530-08:00  INFO 13048 --- [Vehicle-app] [main] com.vehicle_app.VehicleAppApplication    : Starting VehicleAppApplication using Java 23.0.2 with PID 13048 (C:\Users\admin\IdeaProjects\Vutukuru\Day20\Vehicle-app\target\classes started by admin in C:\Users\admin\IdeaProjects\Vutukuru\Day20\Vehicle-app)
+2025-02-17T19:37:22.534-08:00  INFO 13048 --- [Vehicle-app] [main] com.vehicle_app.VehicleAppApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-02-17T19:37:24.687-08:00  INFO 13048 --- [Vehicle-app] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2025-02-17T19:37:24.711-08:00  INFO 13048 --- [Vehicle-app] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-02-17T19:37:24.712-08:00  INFO 13048 --- [Vehicle-app] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-02-17T19:37:24.794-08:00  INFO 13048 --- [Vehicle-app] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-02-17T19:37:24.794-08:00  INFO 13048 --- [Vehicle-app] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2145 ms
+2025-02-17T19:37:25.662-08:00  INFO 13048 --- [Vehicle-app] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-02-17T19:37:25.830-08:00  INFO 13048 --- [Vehicle-app] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path '/'
+2025-02-17T19:37:25.849-08:00  INFO 13048 --- [Vehicle-app] [main] com.vehicle_app.VehicleAppApplication    : Started VehicleAppApplication in 4.152 seconds (process running for 4.869)
+2025-02-17T19:37:46.055-08:00  INFO 13048 --- [Vehicle-app] [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-02-17T19:37:46.056-08:00  INFO 13048 --- [Vehicle-app] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-02-17T19:37:46.058-08:00  INFO 13048 --- [Vehicle-app] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-02-17T19:37:46.234-08:00  WARN 13048 --- [Vehicle-app] [http-nio-8081-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot construct instance of `com.vehicle_app.module.Owner` (although at least one Creator exists): no String-argument constructor/factory method to deserialize from String value ('Revanth')]
+2025-02-17T19:37:58.727-08:00  WARN 13048 --- [Vehicle-app] [http-nio-8081-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.vehicle_app.module.Registration` from Array value (token `JsonToken.START_ARRAY`)]
