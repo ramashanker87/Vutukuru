@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  localstack:
+    image: localstack/localstack
+    container_name: localstack
+    ports:
+      - "4566:4566" # Exposes all AWS services via LocalStack
+    environment:
+      - SERVICES=sqs,dynamodb
+      - AWS_DEFAULT_REGION=us-east-1
+      - EDGE_PORT=4566
+      - DEBUG=1
+    volumes:
+      - "./localstack/init:/etc/localstack/init/ready.d/localstack-setup.sh" # Folder for startup scripts
+      - "/var/lib/localstack:/var/lib/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    networks:
+      - parking-network
+
+
+networks:
+  parking-network:
+    driver: bridge
