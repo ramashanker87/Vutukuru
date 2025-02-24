@@ -10,15 +10,16 @@ public class SqsService {
 
     private final SqsClient sqsClient;
 
+    public SqsService(SqsClient sqsClient) { // Ensure Spring can autowire
+        this.sqsClient = sqsClient;
+    }
+
     @Value("${aws.sqs.parking-start-request}")
     private String parkingStartQueue;
 
     @Value("${aws.sqs.parking-end-request}")
     private String parkingEndQueue;
-
-    public SqsService(SqsClient sqsClient) {
-        this.sqsClient = sqsClient;
-    }
+    
 
     public void sendMessage(String queueName, String message) {
         String queueUrl = sqsClient.getQueueUrl(GetQueueUrlRequest.builder().queueName(queueName).build()).queueUrl();

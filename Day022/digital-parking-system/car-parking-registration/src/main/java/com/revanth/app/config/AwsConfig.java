@@ -17,6 +17,7 @@ import software.amazon.awssdk.http.apache.ApacheHttpClient;
 import java.net.URI;
 
 @Configuration
+@Profile("localstack") // Ensure "localstack" profile is active
 public class AwsConfig {
 
     private static final String LOCALSTACK_ENDPOINT = "http://localhost:4566"; // Change if using AWS
@@ -26,10 +27,9 @@ public class AwsConfig {
         AwsBasicCredentials awsCredentials = AwsBasicCredentials.create("test", "test"); // LocalStack uses "test"
 
         return SqsClient.builder()
-                .region(Region.of("eu-east-1")) // Use correct AWS region
+                .region(Region.US_EAST_1) // Use correct AWS region
                 .credentialsProvider(StaticCredentialsProvider.create(awsCredentials))
                 .endpointOverride(URI.create(LOCALSTACK_ENDPOINT)) // LocalStack or AWS endpoint
-                .httpClient(ApacheHttpClient.builder().build())
                 .overrideConfiguration(ClientOverrideConfiguration.builder().build())
                 .build();
     }
@@ -39,7 +39,7 @@ public class AwsConfig {
         AwsBasicCredentials awsCredentials = AwsBasicCredentials.create("test", "test"); // LocalStack uses "test"
 
         return DynamoDbClient.builder()
-                .region(Region.of("eu-east-1")) // Use correct AWS region
+                .region(Region.US_EAST_1) // Use correct AWS region
                 .credentialsProvider(StaticCredentialsProvider.create(awsCredentials))
                 .endpointOverride(URI.create(LOCALSTACK_ENDPOINT))
                 .build();

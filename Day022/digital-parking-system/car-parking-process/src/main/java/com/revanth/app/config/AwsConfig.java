@@ -3,6 +3,10 @@ package com.revanth.app.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Profile;
+import software.amazon.awssdk.auth.credentials.AwsCredentials;
+import software.amazon.awssdk.auth.credentials.AwsCredentialsProvider;
+import software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedClient;
 import software.amazon.awssdk.services.sqs.SqsClient;
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
 import software.amazon.awssdk.regions.Region;
@@ -14,35 +18,39 @@ import software.amazon.awssdk.http.apache.ApacheHttpClient;
 import java.net.URI;
 
 @Configuration
+@Profile("localstack") // Ensure "localstack" profile is active
 public class AwsConfig {
 
-    @Value("${cloud.aws.credentials.access-key}")
-    private String accessKey;
-
-    @Value("${cloud.aws.credentials.secret-key}")
-    private String secretKey;
-
-    @Value("${cloud.aws.end-point.uri}")
-    private String endpoint;
+    private static final String LOCALSTACK_ENDPOINT = "http://localhost:4566"; // Change if using AWS
 
     @Bean
     public SqsClient sqsClient() {
+        AwsBasicCredentials awsCredentials = AwsBasicCredentials.create("test", "test"); // LocalStack uses "test"
+
         return SqsClient.builder()
-                .region(Region.of("eu-west-1"))
-                .credentialsProvider(StaticCredentialsProvider.create(AwsBasicCredentials.create(accessKey, secretKey)))
-                .endpointOverride(URI.create(endpoint))
-                .httpClient(ApacheHttpClient.builder().build())
+                .region(Region.US_EAST_1) // Use correct AWS region
+                .credentialsProvider(StaticCredentialsProvider.create(awsCredentials))
+                .endpointOverride(URI.create(LOCALSTACK_ENDPOINT)) // LocalStack or AWS endpoint
                 .overrideConfiguration(ClientOverrideConfiguration.builder().build())
                 .build();
     }
 
     @Bean
     public DynamoDbClient dynamoDbClient() {
+        AwsBasicCredentials awsCredentials = AwsBasicCredentials.create("test", "test"); // LocalStack uses "test"
+
         return DynamoDbClient.builder()
-                .region(Region.of("eu-west-1"))
-                .credentialsProvider(StaticCredentialsProvider.create(AwsBasicCredentials.create(accessKey, secretKey)))
-                .endpointOverride(URI.create(endpoint))
+                .region(Region.of("us-east-1")) // Use correct AWS region
+                .credentialsProvider(StaticCredentialsProvider.create(awsCredentials))
+                .endpointOverride(URI.create(LOCALSTACK_ENDPOINT))
+                .overrideConfiguration(ClientOverrideConfiguration.builder().build())
+                .build();
+    }
+
+    @Bean
+    public DynamoDbEnhancedClient dynamoDbEnhancedClient(DynamoDbClient dynamoDbClient) {
+        return DynamoDbEnhancedClient.builder()
+                .dynamoDbClient(dynamoDbClient)
                 .build();
     }
 }
-

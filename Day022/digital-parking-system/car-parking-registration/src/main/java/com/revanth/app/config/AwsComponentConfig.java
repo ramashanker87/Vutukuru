@@ -8,7 +8,7 @@ import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
 import software.amazon.awssdk.auth.credentials.AwsCredentials;
 
 @Configuration
-@Profile("local")
+@Profile("localstack")
 public class AwsComponentConfig {
 
   @Bean
