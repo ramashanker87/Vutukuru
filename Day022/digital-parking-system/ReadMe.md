@@ -6,7 +6,7 @@
 
     docker-compose up
 
-## Running Local Profile
+## Running Local Profiles
 
     mvn spring-boot:run -Dspring-boot.run.profiles=local
 
