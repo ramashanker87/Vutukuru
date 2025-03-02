@@ -17,31 +17,41 @@ import software.amazon.awssdk.http.apache.ApacheHttpClient;
 import java.net.URI;
 
 @Configuration
-@Profile("localstack") // Ensure "localstack" profile is active
+@Profile("local")
 public class AwsConfig {
 
-    private static final String LOCALSTACK_ENDPOINT = "http://localhost:4566"; // Change if using AWS
+//    private static final String LOCALSTACK_ENDPOINT = "http://localhost:4566";
+
+    @Value("${aws.endpoint:http://localhost:4566}")
+    private String endpoint;
+
+    @Value("${aws.accessKeyId:test}")
+    private String accessKeyId;
+
+    @Value("${aws.secretAccessKey:test}")
+    private String secretAccessKey;
 
     @Bean
     public SqsClient sqsClient() {
-        AwsBasicCredentials awsCredentials = AwsBasicCredentials.create("test", "test"); // LocalStack uses "test"
+        AwsBasicCredentials awsCredentials = AwsBasicCredentials.create(accessKeyId, secretAccessKey);
 
         return SqsClient.builder()
-                .region(Region.US_EAST_1) // Use correct AWS region
+                .region(Region.US_EAST_1)
                 .credentialsProvider(StaticCredentialsProvider.create(awsCredentials))
-                .endpointOverride(URI.create(LOCALSTACK_ENDPOINT)) // LocalStack or AWS endpoint
+                .endpointOverride(URI.create(endpoint))
                 .overrideConfiguration(ClientOverrideConfiguration.builder().build())
                 .build();
     }
 
     @Bean
     public DynamoDbClient dynamoDbClient() {
-        AwsBasicCredentials awsCredentials = AwsBasicCredentials.create("test", "test"); // LocalStack uses "test"
+        AwsBasicCredentials awsCredentials = AwsBasicCredentials.create(accessKeyId, secretAccessKey);
 
         return DynamoDbClient.builder()
-                .region(Region.US_EAST_1) // Use correct AWS region
+                .region(Region.US_EAST_1)
                 .credentialsProvider(StaticCredentialsProvider.create(awsCredentials))
-                .endpointOverride(URI.create(LOCALSTACK_ENDPOINT))
+                .endpointOverride(URI.create(endpoint))
                 .build();
     }
 }
+

@@ -1,5 +1,6 @@
 package com.revanth.app.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import software.amazon.awssdk.services.sqs.SqsClient;
@@ -10,6 +11,7 @@ public class SqsService {
 
     private final SqsClient sqsClient;
 
+    @Autowired
     public SqsService(SqsClient sqsClient) { // Ensure Spring can autowire
         this.sqsClient = sqsClient;
     }

@@ -2,6 +2,7 @@ package com.revanth.app.service;
 
 import com.revanth.app.model.Car;
 import com.revanth.app.model.ParkingStart;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.Map;
@@ -18,20 +19,21 @@ public class ParkingService {
     private final DynamoDbService dynamoDbService;
     private final ObjectMapper objectMapper = new ObjectMapper();
 
+    @Autowired
     public ParkingService(SqsService sqsService, DynamoDbService dynamoDbService) {
         this.sqsService = sqsService;
         this.dynamoDbService = dynamoDbService;
     }
 
-    public ParkingStart startParking(String regNo, Car car) {
+    public ParkingStart startParking(String parkingNo, Car car) {
         long startTime = new Date().getTime();
-        String parkingNo = UUID.randomUUID().toString(); // Generate unique parking number
+       // String parkingNo = UUID.randomUUID().toString(); // Generate unique parking number
 
-        dynamoDbService.saveParkingRecord(regNo, parkingNo, startTime);
+        dynamoDbService.saveParkingRecord(car.getRegNo(), parkingNo, startTime);
 
         try {
             String message = objectMapper.writeValueAsString(Map.of(
-                    "regNo", regNo,
+                    "regNo", car.getRegNo(),
                     "parkingNo", parkingNo,
                     "startTime", startTime
             ));

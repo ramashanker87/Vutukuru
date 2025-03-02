@@ -11,7 +11,7 @@ aws --endpoint-url=http://localhost:4566 sqs create-queue --queue-name parking-e
 
 # Create DynamoDB Table
 aws --endpoint-url=http://localhost:4566 dynamodb create-table \
-    --table-name ParkingTable \
+    --table-name ParkingRecords \
     --attribute-definitions AttributeName=regNo,AttributeType=S \
     --key-schema AttributeName=regNo,KeyType=HASH \
     --billing-mode PAY_PER_REQUEST \

@@ -1,5 +1,6 @@
 package com.revanth.app.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
 import software.amazon.awssdk.services.dynamodb.model.*;
@@ -12,6 +13,7 @@ public class DynamoDbService {
 
     private final DynamoDbClient dynamoDbClient;
 
+    @Autowired
     public DynamoDbService(DynamoDbClient dynamoDbClient) {
         this.dynamoDbClient = dynamoDbClient;
     }

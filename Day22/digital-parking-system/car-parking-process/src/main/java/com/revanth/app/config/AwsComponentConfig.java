@@ -8,12 +8,12 @@ import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
 import software.amazon.awssdk.auth.credentials.AwsCredentials;
 
 @Configuration
-@Profile("localstack")
+@Profile("local")
 public class AwsComponentConfig {
 
   @Bean
-  public AwsCredentials componentAwsCredential(@Value("test") String accesskey,
-      @Value("test") String secretkey) {
+  public AwsCredentials componentAwsCredential(@Value("${aws.credentials.access-key:x}") String accesskey,
+      @Value("${aws.credentials.secret-key:x}") String secretkey) {
     return AwsBasicCredentials.create(accesskey, secretkey);
   }
 }
